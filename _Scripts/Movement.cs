@@ -42,8 +42,11 @@ public class Movement : MonoBehaviour
     protected virtual void Move(){
         if(InputManager.instance.InputKeyBoard().x>0){
             transform.localScale = new Vector3(1,1,1);
+            transform.GetChild(4).rotation = Quaternion.Euler(0f,0f,0f);
         }else if(InputManager.instance.InputKeyBoard().x<0){
             transform.localScale = new Vector3(-1,1,1);
+            transform.GetChild(4).rotation = Quaternion.Euler(0f,180f,0f);
+
         }
         _rb.velocity = new Vector2(InputManager.instance.InputKeyBoard().x * _speedOffset * Time.deltaTime,_rb.velocity.y); 
 

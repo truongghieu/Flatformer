@@ -29,5 +29,8 @@ public class InputManager : MonoBehaviour
         return Input.GetKeyDown(KeyCode.Q);
 
     }
-   
+
+    public virtual bool ShootPress(){
+        return Input.GetMouseButtonDown(0);
+    }   
 }
