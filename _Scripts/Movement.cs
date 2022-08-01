@@ -11,17 +11,21 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _JumpForce = 2f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject _ef;
-    private Rigidbody2D _rb;
+    protected Rigidbody2D _rb;
 
     //Dash
-    private TrailRenderer _tr;
+    protected TrailRenderer _tr;
     private bool IsDashing = false;
     //
 
     private bool firstCheck = true;
     private bool highJump = true;
-    private Transform _gc;
-    void Start(){
+    protected Transform _gc;
+
+    ///
+    public LayerMask Enemylayer;
+
+    protected virtual void Start(){
         _rb = GetComponent<Rigidbody2D>();
         _gc = transform.GetChild(1);
         _tr = GetComponent<TrailRenderer>();
@@ -30,6 +34,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        TakeDame();
         if(IsDashing) return;
         Move();
         Jump();
@@ -93,6 +98,7 @@ public class Movement : MonoBehaviour
         if(Physics2D.OverlapCircle(_gc.position,0.05f,groundLayer) != null ){
             highJump = true;
             if(firstCheck){
+                _rb.velocity = new Vector2(_rb.velocity.x,0);
                 firstCheck = false;
                 Vector3 pos =transform.GetChild(2).position;
                 GameObject t = Instantiate(_ef,pos,Quaternion.identity);
@@ -105,4 +111,16 @@ public class Movement : MonoBehaviour
         firstCheck = true;
         return false;
     }
+
+    void TakeDame(){
+        Collider2D[] en = Physics2D.OverlapBoxAll(transform.position,new Vector2(0.9f,.8f),Enemylayer);
+        foreach(Collider2D e in en)
+        {
+            if(e.gameObject.tag == "Enemy") Destroy(e.gameObject);
+        }
+    }
+    
+        
+
 }
+
