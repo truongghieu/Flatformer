@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour
     public LayerMask Enemylayer;
 
     protected virtual void Start(){
+        Time.timeScale = 1;
         _rb = GetComponent<Rigidbody2D>();
         _gc = transform.GetChild(1);
         _tr = GetComponent<TrailRenderer>();
@@ -34,6 +35,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if(UIManager.pauseGame)return;
         TakeDame();
         if(IsDashing) return;
         Move();
@@ -84,7 +86,7 @@ public class Movement : MonoBehaviour
         IsDashing = true;
         Vector3 pos =transform.GetChild(2).position;
         GameObject t = Instantiate(_ef,pos,Quaternion.identity);
-        Destroy(t,DashTime);        
+        Destroy(t,2);        
         float gravity = _rb.gravityScale;
         _rb.gravityScale = 0;
         _rb.velocity = new Vector2(_DashForce*transform.localScale.x, 0);
@@ -116,11 +118,14 @@ public class Movement : MonoBehaviour
         Collider2D[] en = Physics2D.OverlapBoxAll(transform.position,new Vector2(0.9f,.8f),Enemylayer);
         foreach(Collider2D e in en)
         {
-            if(e.gameObject.tag == "Enemy") Destroy(e.gameObject);
+            if(e.gameObject.tag == "Enemy" || e.gameObject.tag == "obstack") GameManager.instance.ToEndGame();
+        
         }
+        if(transform.position.y < - 20) GameManager.instance.ToEndGame();
     }
     
-        
+
+ 
 
 }
 

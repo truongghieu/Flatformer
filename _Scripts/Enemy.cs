@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     }
 
     void Update(){
+
+        if(UIManager.pauseGame)return;
+
         if(Vector2.Distance(transform.position,player.transform.position) < dis){
             transform.position = Vector2.MoveTowards(transform.position,player.transform.position,speed * Time.deltaTime);
         }

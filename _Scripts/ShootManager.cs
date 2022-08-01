@@ -23,7 +23,6 @@ public class ShootManager : MonoBehaviour
     protected virtual void shoot(){
         if(InputManager.instance.ShootPress()){
             ///
-            Debug.Log("asdas");
             GameObject bul = Instantiate(bullet,pos.position,pos.rotation);
         
             Destroy(bul,bulletTime);
