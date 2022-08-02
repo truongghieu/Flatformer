@@ -6,9 +6,17 @@ public class UIManager : MonoBehaviour
     public static bool pauseGame = false;
     public GameObject canvas;
 
+
+    void Update(){
+        EndGame();
+    }
+
     public void PlayAgain(){
+        if(PlayerPrefs.GetInt("GameLevel") == 0 ){
+            PlayerPrefs.SetInt("GameLevel",1);
+        }
         pauseGame = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("GameLevel"));
     }
 
     public void GoToHome(){
@@ -29,4 +37,17 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         canvas.SetActive(true);
     }
+
+    void EndGame(){
+        if(GameManager.instance.EndingGame == true){
+        Time.timeScale = 0;
+        canvas.SetActive(true);
+        GameObject.Find("Player").GetComponent<Movement>().enabled = false;
+    }
+    }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
+
 }

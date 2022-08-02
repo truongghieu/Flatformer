@@ -283,6 +283,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: enviroment_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b9d049a9176c34d975fe0271c00a59
+      internalID: 1097153687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enviroment_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed545b5144c8fd743aa1b2f148a44c18
+      internalID: 511270497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -296,6 +338,7 @@ TextureImporter:
     nameFileIdTable:
       enviroment_7: 51687916
       enviroment_6: 1587732537
+      enviroment_1: 511270497
       knife: -1913705975
       effect: -265145462
       enemy: 869689823
@@ -305,6 +348,7 @@ TextureImporter:
       sun: 422524745
       ground: 558802580
       enviroment_3: 1186317573
+      enviroment_0: 1097153687
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

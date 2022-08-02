@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Follow : MonoBehaviour
@@ -8,8 +7,9 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.instance.StartGame == true){
         pl = GameObject.Find("Player").transform.position;
         transform.position = new Vector3(pl.x,pl.y,transform.position.z);
-
+        }
     }
 }

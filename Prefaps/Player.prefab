@@ -140,6 +140,37 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &1633859224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633859225}
+  m_Layer: 0
+  m_Name: ShotPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1633859225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633859224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6494006249176793902}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6494006249149546905
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +237,7 @@ Transform:
   - {fileID: 6494006249516979661}
   - {fileID: 6494006249149546904}
   - {fileID: 1436629674}
+  - {fileID: 1633859225}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -247,14 +279,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 0.6
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 4
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6494006249176793889
 MonoBehaviour:
@@ -271,11 +303,14 @@ MonoBehaviour:
   _speedOffset: 800
   _DashForce: 20
   DashTime: 0.2
-  _JumpForce: 200
+  _JumpForce: 250
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
   _ef: {fileID: 8004407654255317836, guid: fe381e9934aafa5459b1d5e36bd51462, type: 3}
+  Enemylayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6494006249240359120
 GameObject:
   m_ObjectHideFlags: 0

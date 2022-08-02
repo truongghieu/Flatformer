@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
 
     ///
     public LayerMask Enemylayer;
+    
 
     protected virtual void Start(){
         Time.timeScale = 1;
@@ -33,7 +34,7 @@ public class Movement : MonoBehaviour
         
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if(UIManager.pauseGame)return;
         TakeDame();
@@ -114,17 +115,19 @@ public class Movement : MonoBehaviour
         return false;
     }
 
-    void TakeDame(){
+    public void TakeDame(){
         Collider2D[] en = Physics2D.OverlapBoxAll(transform.position,new Vector2(0.9f,.8f),Enemylayer);
         foreach(Collider2D e in en)
         {
-            if(e.gameObject.tag == "Enemy" || e.gameObject.tag == "obstack") GameManager.instance.ToEndGame();
+            if(e.gameObject.tag == "Enemy" || e.gameObject.tag == "obstack") {
+                GameManager.instance.ToEndGame();
+                }
         
+            if(e.gameObject.tag == "WinningGame") GameManager.instance.WinGame();
         }
         if(transform.position.y < - 20) GameManager.instance.ToEndGame();
     }
     
-
  
 
 }

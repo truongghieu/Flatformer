@@ -1,11 +1,15 @@
-
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] private GameObject _canvas;
+    public static int GameLoadSceneTime = 0;
+    public bool EndingGame = false;
+    public bool WinningGame = false;
+    public bool StartGame = false;
+    public GameObject player;
+
 
     void Awake(){
         if(instance != null){
@@ -17,11 +21,20 @@ public class GameManager : MonoBehaviour
 
 
     public void ToEndGame(){
-        Time.timeScale = 0;
-        _canvas.SetActive(true);
-        GameObject.Find("Player").GetComponent<Movement>().enabled = false;
+        if(GameLoadSceneTime == 5){
+            PlayerPrefs.SetInt("GameLevel",1);
+            GameLoadSceneTime = 0;
+            EndingGame = true;
+            }else{
+            GameLoadSceneTime += 1;
+            EndingGame = true;
+        }
     }
 
-  
-
+    public void WinGame()
+    {
+        WinningGame = true;
+        PlayerPrefs.SetInt("GameLevel",PlayerPrefs.GetInt("GameLevel")+1);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("GameLevel")); 
+    }
 }

@@ -7,11 +7,13 @@ public class ShootManager : MonoBehaviour
 
     [SerializeField] private GameObject bullet;
 
-    [SerializeField] private float bulletTime = 1f;
+    [SerializeField] private float bulletTime = .5f;
     [SerializeField] private Transform pos;
 
     void Start()
-    {
+    {   
+        pos = GameObject.Find("Player").transform.GetChild(4);
+        GameManager.instance.StartGame = true;
     }
 
     // Update is called once per frame

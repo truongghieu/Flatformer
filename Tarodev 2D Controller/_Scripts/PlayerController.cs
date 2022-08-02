@@ -49,8 +49,8 @@ namespace TarodevController {
 
         private void GatherInput() {
             Input = new FrameInput {
-                JumpDown = UnityEngine.Input.GetButtonDown("Jump"),
-                JumpUp = UnityEngine.Input.GetButtonUp("Jump"),
+                JumpDown = UnityEngine.Input.GetKeyDown(KeyCode.W),
+                JumpUp = UnityEngine.Input.GetKeyDown(KeyCode.W),
                 X = UnityEngine.Input.GetAxisRaw("Horizontal")
             };
             if (Input.JumpDown) {
@@ -288,6 +288,7 @@ namespace TarodevController {
                         var dir = transform.position - hit.transform.position;
                         transform.position += dir.normalized * move.magnitude;
                     }
+                    transform.position += Vector3.zero;
 
                     return;
                 }
